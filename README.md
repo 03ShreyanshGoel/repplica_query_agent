@@ -16,7 +16,6 @@
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
 
 ---
 
