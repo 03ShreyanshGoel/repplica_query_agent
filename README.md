@@ -1,7 +1,5 @@
 # Intelligent Web Browser Query Agent for Ripplica
 
-![Project Logo or Banner - Optional]
-
 ---
 
 ## Table of Contents
@@ -76,7 +74,7 @@ The core processing flow:
 
 - Python 3.10+ for FastAPI backend  
 - Node.js and npm/yarn for React frontend and Playwright dependencies  
-- Access to AI API keys (Gemini, OpenAI, Hugging Face) configured via environment variables  
+- Access to AI API keys (Gemini, Hugging Face) configured via environment variables  
 
 ### Setup Instructions
 
