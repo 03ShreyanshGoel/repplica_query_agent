@@ -1,7 +1,5 @@
 # Intelligent Web Browser Query Agent for Ripplica
 
-![Project Logo or Banner - Optional]
-
 ---
 
 ## Table of Contents
@@ -41,7 +39,7 @@ This project implements an intelligent web browser query agent developed for **R
 
 ## Architecture & Workflow
 
-![Flowchart illustrating the system architecture and workflow](./docs/images/flowchart.png)
+<img width="980" height="681" alt="diagram-export-1-8-2025-10_43_51-pm" src="https://github.com/user-attachments/assets/d00fc8f4-e06a-4913-9568-d2fc3ba628a3" />
 
 *Figure: System flow from query submission, through validation, semantic caching, scraping, summarization, to final response.*
 
