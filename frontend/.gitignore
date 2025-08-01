@@ -1,0 +1,38 @@
+# Node.js / React related
+node_modules/
+build/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.env
+.env.*
+.Python
+
+# Cache and database folders (like for ChromaDB or local caches)
+cache/
+.cache/
+
+# Logs
+*.log
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# If using React scripts or create-react-app, these are common
+build/
+public/static/
+
+# Optional: coverage reports
+coverage/
