@@ -1,6 +1,3 @@
-Here is a comprehensive, technically sound, and well-structured README template for your project, fully encompassing important sections with clear explanations and a placeholder for your project’s flowchart image. This template is tailored to your stack (React frontend, FastAPI backend, Playwright scraping, Gemini/HuggingFace summarization) and aligned with best documentation practices:
-
-```markdown
 # Intelligent Web Browser Query Agent for Ripplica
 
 ![Project Logo or Banner - Optional]
