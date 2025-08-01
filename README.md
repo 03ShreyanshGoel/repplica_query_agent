@@ -38,7 +38,7 @@ This project implements an intelligent web browser query agent developed for **R
 
 ## Architecture & Workflow
 
-[<img width="980" height="681" alt="diagram-export-1-8-2025-10_43_51-pm" src="https://github.com/user-attachments/assets/d00fc8f4-e06a-4913-9568-d2fc3ba628a3" />](https://app.eraser.io/workspace/gvfaNOuMzYBmi082s1g0?origin=share)
+<img width="1611" height="1175" alt="diagram-export-2-8-2025-12_25_49-am" src="https://github.com/user-attachments/assets/b6102b5f-944c-4394-98df-58170f571e36" />
 
 *Figure: System flow from query submission, through validation, semantic caching, scraping, summarization, to final response.*
 
