@@ -1,4 +1,9 @@
+Here is a comprehensive, technically sound, and well-structured README template for your project, fully encompassing important sections with clear explanations and a placeholder for your project’s flowchart image. This template is tailored to your stack (React frontend, FastAPI backend, Playwright scraping, Gemini/HuggingFace summarization) and aligned with best documentation practices:
+
+```markdown
 # Intelligent Web Browser Query Agent for Ripplica
+
+![Project Logo or Banner - Optional]
 
 ---
 
@@ -39,8 +44,7 @@ This project implements an intelligent web browser query agent developed for **R
 
 ## Architecture & Workflow
 
-<img width="980" height="681" alt="diagram-export-1-8-2025-10_43_51-pm" src="https://github.com/user-attachments/assets/63a29da0-184f-4d54-bc95-6945aba9f0e3" />
-
+![Flowchart illustrating the system architecture and workflow](./docs/images/flowchart.png)
 
 *Figure: System flow from query submission, through validation, semantic caching, scraping, summarization, to final response.*
 
@@ -63,7 +67,7 @@ The core processing flow:
 - **Frontend:** React.js for user interface (optional)  
 - **Web Scraping:** Playwright for robust headless browser automation  
 - **Semantic Search:** SentenceTransformer `all-MiniLM-L6-v2` embeddings + ChromaDB vector database  
-- **AI Summarization:** Google Gemini API, Hugging Face models for diverse summarization options  
+- **AI Summarization:** OpenAI GPT, Google Gemini API, Hugging Face models for diverse summarization options  
 - **Utilities:** UUID for unique caching keys, Python logging for traceability  
 
 ---
@@ -74,7 +78,94 @@ The core processing flow:
 
 - Python 3.10+ for FastAPI backend  
 - Node.js and npm/yarn for React frontend and Playwright dependencies  
-- Access to AI API keys (Gemini, Hugging Face) configured via environment variables  
+- Access to AI API keys (Gemini, OpenAI, Hugging Face) configured via environment variables  
 
 ### Setup Instructions
 
+```
+# Clone the repository
+git clone https://github.com/yourusername/yourrepo.git
+cd yourrepo
+
+# Backend setup: install Python dependencies
+pip install -r requirements.txt
+
+# Install Playwright browsers required for scraping
+playwright install
+
+# Frontend setup (if separate frontend folder)
+cd frontend
+npm install
+npm start  # to run React development server
+
+# Run the backend API server from project root
+uvicorn app:app --host 0.0.0.0 --port 8000  --log-level debug
+```
+
+---
+
+## Usage
+
+- Submit queries via the API endpoint or through the React frontend client.  
+- The system returns quick answers by validating, caching, scraping, and summarizing queries in near real-time.  
+- Cached results speed up repeated queries with similar meaning.
+
+---
+
+## Validation Heuristics
+
+The system uses **simple, fast heuristics** to validate user queries by checking:  
+- Presence of interrogative words (e.g., what, how, why) or question marks anywhere  
+- Inclusion of comparator keywords (e.g., best, worst, top)  
+- Avoidance of multiple unrelated commands separated by commas, semicolons, or conjunctions  
+This lightweight filtering ensures responsiveness without heavy NLP processing.
+
+---
+
+## Similarity Search & Caching
+
+Queries are transformed into semantic vector embeddings via SentenceTransformer.  
+These embeddings and their corresponding summaries are stored in ChromaDB.  
+Incoming queries compare embeddings against the cache using cosine distance with a threshold (0.2).  
+Matched cached answers are returned immediately, enabling efficient reuse and reducing unnecessary scraping.
+
+---
+
+## Web Scraping & Summarization
+
+For uncached or novel queries:  
+- Playwright automates web browser sessions to scrape the top 5 search results from DuckDuckGo, chosen for lighter anti-bot restrictions.  
+- AI summarization models (Google Gemini API, OpenAI GPT, Hugging Face) distill the scraped content into concise, informative answers.  
+- The processed summaries are cached for fast future retrieval.
+
+---
+
+## Engineering Decisions
+
+- Opted for **simple heuristics** over complex AI models for query validation prioritizing speed and maintainability.  
+- Chose **Playwright** over Selenium for faster, more reliable, and stealthier web scraping across multiple browsers.  
+- Selected **DuckDuckGo** as the search engine for scraping to avoid restrictive bot blocks encountered on Google.  
+- Integrated multiple AI summarization backends (Gemini, Hugging Face) to balance reliability and handle occasional download or API errors.  
+- Used **ChromaDB** vector database to enable rich semantic search beyond keyword matching.
+
+---
+
+## Future Enhancements
+
+- Integrate AI-based query validation for improved understanding without sacrificing latency.  
+- Enhance summarization with multi-document context and user personalization.  
+- Develop a polished frontend with more interactive and user-friendly features.  
+- Expand scraping to multiple search engines and data sources for broader coverage.  
+- Implement cache expiration, refresh policies, and incremental updates.
+
+---
+
+## Contributing
+
+Contributions and issues are welcome! Please open issues or pull requests on the GitHub repository.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
