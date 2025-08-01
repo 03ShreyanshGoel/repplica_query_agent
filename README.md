@@ -1,5 +1,7 @@
 # Intelligent Web Browser Query Agent for Ripplica
 
+---
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Features](#features)
