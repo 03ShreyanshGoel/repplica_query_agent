@@ -24,51 +24,49 @@
 
 ## Project Overview
 
-This project implements an intelligent web browser query agent designed for **Ripplica**, led by CEO Bhavesh. The agent intelligently validates user queries, efficiently reuses cached answers for semantically similar queries, scrapes new data using Playwright when needed, and summarizes web results using state-of-the-art AI models. The result is a fast, user-friendly search assistant that balances performance, maintainability, and accuracy.
+This project implements an intelligent web browser query agent developed for **Ripplica**, led by CEO Bhavesh. It enables users to submit natural language queries that are validated, efficiently matched against cached similar queries using semantic embeddings, and, if new, answered by scraping relevant web content followed by AI-powered summarization. The agent balances speed, maintainability, and reliability to deliver concise, meaningful responses promptly.
 
 ---
 
 ## Features
 
-- Lightweight and fast query validation using simple heuristics  
-- Semantic similarity search with sentence embeddings stored in ChromaDB  
-- Automated web scraping of top search results using Playwright  
-- AI-powered summarization of scraped content  
-- Caching of query and summary pairs for instant responses on repeated queries  
-- Modular architecture enabling easy maintenance and future improvements  
+- Fast query validation using lightweight heuristics  
+- Semantic similarity search with SentenceTransformer embeddings and ChromaDB vector search  
+- Automated scraping of top 5 search results via Playwright  
+- AI-based summarization using OpenAI GPT, Google Gemini API, and Hugging Face models  
+- Caching of query-summary pairs to avoid redundant work  
+- Modular architecture supporting scalability and future improvements  
 
 ---
 
 ## Architecture & Workflow
 
-<img width="980" height="681" alt="diagram-export-1-8-2025-10_43_51-pm" src="https://github.com/user-attachments/assets/14f8b2ad-4cfa-499b-a009-a1744d8ac69c" />
+<img width="980" height="681" alt="diagram-export-1-8-2025-10_43_51-pm" src="https://github.com/user-attachments/assets/63a29da0-184f-4d54-bc95-6945aba9f0e3" />
 
-*Figure: System flow from query input through validation, caching, scraping, summarization, and response*
 
-The system follows this high-level flow:
+*Figure: System flow from query submission, through validation, semantic caching, scraping, summarization, to final response.*
 
-1. User inputs a query  
-2. System validates the query with heuristics  
-3. If valid, searches cache for semantically similar queries  
-4. Returns cached summary if similarity is above threshold  
-5. If no cached answer, runs Playwright to scrape top 5 web results  
-6. Uses AI model to summarize content  
-7. Stores new query + summary in cache  
-8. Returns concise summary to user
+The core processing flow:
 
-   
-
+1. User submits a query.  
+2. The query is validated using simple heuristics to ensure meaningful input.  
+3. If valid, the system searches a cache of past queries in ChromaDB using semantic embedding similarity.  
+4. If a close match is found (cosine similarity under threshold), the cached summary is returned instantly.  
+5. If no cached summary exists, Playwright automates a browser to scrape the top 5 search results from DuckDuckGo.  
+6. The scraped content is summarized into a concise answer using AI language models.  
+7. The new query and summary are cached for future reuse.  
+8. The summary is returned to the user.
 
 ---
 
 ## Technology Stack
 
-- **Backend:** Python (for API and processing)  
-- **Web Scraping:** Playwright  
-- **Semantic Search:** SentenceTransformers (all-MiniLM-L6-v2) embeddings + ChromaDB vector database  
-- **AI Summarization:** OpenAI GPT, Google Gemini API, and Hugging Face models  
-- **Frontend:** (Optional) React.js or CLI client  
-- **Other:** UUID for unique cache keys, logging for traceability  
+- **Backend:** FastAPI (Python) for API and processing  
+- **Frontend:** React.js for user interface (optional)  
+- **Web Scraping:** Playwright for robust headless browser automation  
+- **Semantic Search:** SentenceTransformer `all-MiniLM-L6-v2` embeddings + ChromaDB vector database  
+- **AI Summarization:** Google Gemini API, Hugging Face models for diverse summarization options  
+- **Utilities:** UUID for unique caching keys, Python logging for traceability  
 
 ---
 
@@ -76,8 +74,9 @@ The system follows this high-level flow:
 
 ### Prerequisites
 
-- Python 3.8+  
-- Node.js (if running frontend or for Playwright)  
+- Python 3.10+ for FastAPI backend  
+- Node.js and npm/yarn for React frontend and Playwright dependencies  
+- Access to AI API keys (Gemini, OpenAI, Hugging Face) configured via environment variables  
 
-### Setup
+### Setup Instructions
 
